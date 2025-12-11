@@ -125,3 +125,4 @@ C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\NotesWebApp\Notes
 C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\NotesWebApp\NotesWebApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\NotesWebApp\NotesWebApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\NotesWebApp\NotesWebApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Vladimir\OneDrive\Desktop\Мои разработки\NotesWebApp\NotesWebApp\obj\Debug\net8.0\NotesWebApp.sourcelink.json
