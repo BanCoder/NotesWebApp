@@ -1,15 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CreateNoteForm from './components/CreateNoteForm';
+import Note from './components/Note';
+import Filters from './components/Filters';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-      </header>
-    </div>
+    <section className='p-8 flex flex-row justify-start items-start gap-12'> 
+      <div className="flex flex-col w-1/3 gap-10">
+        <CreateNoteForm/>
+        <Filters/>
+      </div>  
+      <ul className='flex flex-col gap-5 flex-1/2'>
+          <li>
+            <Note/>
+          </li>
+        </ul>
+    </section>
   );
 }
-
 export default App;
