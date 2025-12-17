@@ -24,6 +24,16 @@
             "description": "OK"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Note"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/Note/{id}": {

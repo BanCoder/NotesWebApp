@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "NotesWebApp.NoteController",
+    "Method": "GetAllNotes",
+    "RelativePath": "Note",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NotesWebApp.NoteController",
     "Method": "GetNoteAsync",
     "RelativePath": "Note/{id}",
     "HttpMethod": "GET",

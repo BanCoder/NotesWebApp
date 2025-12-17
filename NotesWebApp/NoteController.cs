@@ -17,7 +17,13 @@ namespace NotesWebApp
 		public async Task<IActionResult> GetNoteAsync([FromRoute]int id)
 		{
 			var result = await noteService.GetByIdAsync(id);
-			return Ok(result); 
+			return Ok(new { Id = id, Text = result }); 
+		}
+		[HttpGet]
+		public async Task<IActionResult> GetAllNotes()
+		{
+			var result = await noteService.GetAllAsync();
+			return Ok(result);
 		}
 		[HttpPut("{id:int}")]
 		public async Task<IActionResult> UpdateAsync([FromRoute] int id, string newText)
