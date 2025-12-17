@@ -20,6 +20,10 @@ namespace DataAccess
 		{
 			return await context.Notes.FirstOrDefaultAsync(x => x.Id == id);
 		}
+		public async Task<List<Note>> GetAllAsync(CancellationToken cancellationToken = default)
+		{
+			return await context.Notes.ToListAsync(cancellationToken);
+		}
 		public async Task UpdateAsync(Note note, CancellationToken cancellationToken = default)
 		{
 			note.Updated = DateTime.UtcNow;
