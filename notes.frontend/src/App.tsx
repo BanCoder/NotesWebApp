@@ -1,21 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import CreateNoteForm from './components/CreateNoteForm';
 import Note from './components/Note';
+import { fetchNotes, createNote } from './services/notes';
 import Filters from './components/Filters';
 
+
+interface NoteType {
+  id: number;
+  text: string; 
+  created: string; 
+}
+interface FilterType {
+  search: string;
+  sortItem: string;
+  sortOrder: 'desc' | 'asc';
+}
 function App() {
+  const [notes, setNotes] = useState<NoteType[]>([]);
+  const [filter, setFilter] = useState<FilterType>({
+    search: "", 
+    sortItem: "date", 
+    sortOrder: "desc"
+  }); 
+  useEffect(() => {
+    const fetchData = async () => {
+      let notes =await fetchNotes(filter); 
+      setNotes(notes); 
+    }
+    fetchData(); 
+  }, [filter]);
+  const onCreate = async (note: { text: string }) => {
+    await createNote({ text: note.text });
+    const notes = await fetchNotes(filter);
+    setNotes(notes || []);
+  };
   return (
     <section className='p-8 flex flex-row justify-start items-start gap-12'> 
       <div className="flex flex-col w-1/3 gap-10">
-        <CreateNoteForm/>
-        <Filters/>
-      </div>  
-      <ul className='flex flex-col gap-5 flex-1/2'>
-          <li>
-            <Note/>
+        <CreateNoteForm onCreate={onCreate}/>
+        <Filters filter={filter} setFilter ={setFilter} />
+      </div>
+      <ul className='flex flex-col gap-5 w-1/2'>
+          {notes.map((n) => ( 
+          <li key={n.id}>
+            <Note 
+              title={n.text.split(':')[0] || `Заметка ${n.id}`}
+              description={n.text.split(':').slice(1).join(':').trim() || n.text}
+              createAt={n.created}
+            />
           </li>
+        ))}
         </ul>
     </section>
   );
