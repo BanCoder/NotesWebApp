@@ -26,6 +26,16 @@ namespace BusinessLogic
 			}
 			return note.Text;
 		}
+		public async Task<List<NoteDto>> GetAllAsync(CancellationToken cancellationToken = default)
+		{
+			var notes = await noteRepository.GetAllAsync(cancellationToken);
+			return notes.Select(n => new NoteDto
+			{
+				Id = n.Id,
+				Text = n.Text,
+				Created = n.Created
+			}).ToList();
+		}
 		public async Task UpdateAsync(int id, string newText, CancellationToken cancellationToken = default)
 		{
 			var note = await noteRepository.GetByIdAsync(id, cancellationToken);

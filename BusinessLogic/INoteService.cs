@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,15 @@ namespace BusinessLogic
 	{
 		Task CreateAsync(string text, CancellationToken cancellationToken = default);
 		Task<string> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+		Task<List<NoteDto>> GetAllAsync(CancellationToken cancellationToken = default);
 		Task UpdateAsync(int id, string newText, CancellationToken cancellationToken = default);
 		Task DeleteAsync(int id, CancellationToken cancellationToken = default);
 	}
+	public class NoteDto 
+	{
+		public int Id { get; set; }
+		public string Text { get; set; }
+		public DateTime Created { get; set; }
+	}
+
 }
