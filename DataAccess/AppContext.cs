@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
@@ -13,7 +8,8 @@ namespace DataAccess
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Note>().HasKey(x => x.Id);
-			modelBuilder.Entity<Note>().Property(x => x.Text).HasMaxLength(150);
+			modelBuilder.Entity<Note>().Property(x => x.Title).HasMaxLength(50); 
+			modelBuilder.Entity<Note>().Property(x => x.Description).HasMaxLength(150);
 			base.OnModelCreating(modelBuilder);
 		}
 	}

@@ -1,10 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -18,7 +12,7 @@ namespace DataAccess
 		}
 		public async Task<Note?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
 		{
-			return await context.Notes.FirstOrDefaultAsync(x => x.Id == id);
+			return await context.Notes.FirstOrDefaultAsync(x => x.Id == id,cancellationToken);
 		}
 		public async Task<List<Note>> GetAllAsync(CancellationToken cancellationToken = default)
 		{
