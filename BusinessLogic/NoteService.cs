@@ -1,30 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess; 
+﻿using DataAccess;
 
 namespace BusinessLogic
 {
 	internal class NoteService(INoteRepository noteRepository): INoteService
 	{
-		public async Task CreateAsync(string text, CancellationToken cancellationToken = default)
+		public async Task CreateAsync(string title, string description, CancellationToken cancellationToken = default)
 		{
 			var note = new Note
 			{
-				Text = text
+				Title = title,
+				Description = description,
 			}; 
 			await noteRepository.CreateAsync(note, cancellationToken);
-		}
-		public async Task<string> GetByIdAsync(int id, CancellationToken cancellationToken = default)
-		{
-			var note = await noteRepository.GetByIdAsync(id, cancellationToken); 
-			if (note == null)
-			{
-				throw new Exception("Note is not found"); 
-			}
-			return note.Text;
 		}
 		public async Task<List<NoteDto>> GetAllAsync(CancellationToken cancellationToken = default)
 		{
@@ -32,23 +19,32 @@ namespace BusinessLogic
 			return notes.Select(n => new NoteDto
 			{
 				Id = n.Id,
-				Text = n.Text,
+				Title = n.Title,
+				Description = n.Description,
 				Created = n.Created
 			}).ToList();
 		}
-		public async Task UpdateAsync(int id, string newText, CancellationToken cancellationToken = default)
+		public async Task UpdateAsync(int id, string title, string description, CancellationToken cancellationToken = default)
 		{
-			var note = await noteRepository.GetByIdAsync(id, cancellationToken);
+			var note = await noteRepository.GetByIdAsync(id,cancellationToken);
 			if (note == null)
 			{
 				throw new Exception("Note is not found");
 			}
-			note.Text = newText;
+			if (title != null)
+			{
+				note.Title = title;
+			}
+				
+			if (description != null)
+			{
+				note.Description = description;
+			}
 			await noteRepository.UpdateAsync(note, cancellationToken); 
 		}
 		public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
 		{
-			var note = await noteRepository.GetByIdAsync(id, cancellationToken);
+			var note = await noteRepository.GetByIdAsync(id,cancellationToken);
 			if (note == null)
 			{
 				throw new Exception("Note is not found");
