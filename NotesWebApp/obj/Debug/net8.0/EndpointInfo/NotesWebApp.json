@@ -12,7 +12,14 @@
         ],
         "parameters": [
           {
-            "name": "text",
+            "name": "title",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
             "in": "query",
             "schema": {
               "type": "string"
@@ -37,27 +44,6 @@
       }
     },
     "/Note/{id}": {
-      "get": {
-        "tags": [
-          "Note"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
       "put": {
         "tags": [
           "Note"
@@ -73,7 +59,14 @@
             }
           },
           {
-            "name": "newText",
+            "name": "title",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
             "in": "query",
             "schema": {
               "type": "string"

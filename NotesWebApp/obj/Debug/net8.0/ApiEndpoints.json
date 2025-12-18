@@ -8,7 +8,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "text",
+        "Name": "title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "description",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -27,22 +32,6 @@
   },
   {
     "ContainingType": "NotesWebApp.NoteController",
-    "Method": "GetNoteAsync",
-    "RelativePath": "Note/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "NotesWebApp.NoteController",
     "Method": "UpdateAsync",
     "RelativePath": "Note/{id}",
     "HttpMethod": "PUT",
@@ -55,7 +44,12 @@
         "IsRequired": true
       },
       {
-        "Name": "newText",
+        "Name": "title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "description",
         "Type": "System.String",
         "IsRequired": false
       }

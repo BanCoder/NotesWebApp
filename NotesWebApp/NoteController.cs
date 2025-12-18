@@ -8,16 +8,10 @@ namespace NotesWebApp
 	public class NoteController(INoteService noteService): ControllerBase
 	{
 		[HttpPost]
-		public async Task<IActionResult> CreateAsync(string text)
+		public async Task<IActionResult> CreateAsync(string title, string description)
 		{
-			await noteService.CreateAsync(text);
+			await noteService.CreateAsync(title, description);
 			return NoContent(); 
-		}
-		[HttpGet("{id:int}")]
-		public async Task<IActionResult> GetNoteAsync([FromRoute]int id)
-		{
-			var result = await noteService.GetByIdAsync(id);
-			return Ok(new { Id = id, Text = result }); 
 		}
 		[HttpGet]
 		public async Task<IActionResult> GetAllNotes()
@@ -26,9 +20,9 @@ namespace NotesWebApp
 			return Ok(result);
 		}
 		[HttpPut("{id:int}")]
-		public async Task<IActionResult> UpdateAsync([FromRoute] int id, string newText)
+		public async Task<IActionResult> UpdateAsync([FromRoute] int id, string title, string description)
 		{
-			await noteService.UpdateAsync(id, newText);
+			await noteService.UpdateAsync(id, title, description);
 			return NoContent();
 		}
 		[HttpDelete("{id:int}")]
