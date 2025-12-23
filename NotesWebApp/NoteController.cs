@@ -14,9 +14,9 @@ namespace NotesWebApp
 			return NoContent(); 
 		}
 		[HttpGet]
-		public async Task<IActionResult> GetAllNotes()
+		public async Task<IActionResult> GetAllNotes([FromQuery] string? search, [FromQuery] string? sortOrder = "desc")
 		{
-			var result = await noteService.GetAllAsync();
+			var result = await noteService.GetAllAsync(search, sortOrder);
 			return Ok(result);
 		}
 		[HttpPut("{id:int}")]

@@ -13,10 +13,19 @@ namespace BusinessLogic
 			}; 
 			await noteRepository.CreateAsync(note, cancellationToken);
 		}
-		public async Task<List<NoteDto>> GetAllAsync(CancellationToken cancellationToken = default)
+		public async Task<List<NoteDto>> GetAllAsync(string? search, string? sortOrder, CancellationToken cancellationToken = default)
 		{
 			var notes = await noteRepository.GetAllAsync(cancellationToken);
-			return notes.Select(n => new NoteDto
+			var filtered = notes.AsQueryable();
+
+			if (!string.IsNullOrEmpty(search))
+			{
+				filtered = filtered.Where(n =>
+					n.Title.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+					n.Description.Contains(search, StringComparison.OrdinalIgnoreCase));
+			}
+			filtered = sortOrder?.ToLower() == "asc" ? filtered.OrderBy(n => n.Created) : filtered.OrderByDescending(n => n.Created);
+			return filtered.Select(n => new NoteDto
 			{
 				Id = n.Id,
 				Title = n.Title,
