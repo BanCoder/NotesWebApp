@@ -8,7 +8,8 @@ import Filters from './components/Filters';
 
 interface NoteType {
   id: number;
-  text: string; 
+  title: string; 
+  description: string
   created: string; 
 }
 interface FilterType {
@@ -30,8 +31,8 @@ function App() {
     }
     fetchData(); 
   }, [filter]);
-  const onCreate = async (note: { text: string }) => {
-    await createNote({ text: note.text });
+  const onCreate = async (note: { title: string, description: string }) => {
+    await createNote(note);
     const notes = await fetchNotes(filter);
     setNotes(notes || []);
   };
@@ -45,9 +46,9 @@ function App() {
           {notes.map((n) => ( 
           <li key={n.id}>
             <Note 
-              title={n.text.split(':')[0] || `Заметка ${n.id}`}
-              description={n.text.split(':').slice(1).join(':').trim() || n.text}
-              createAt={n.created}
+              title={n.title}
+              description={n.description}
+              createdAt={n.created}
             />
           </li>
         ))}

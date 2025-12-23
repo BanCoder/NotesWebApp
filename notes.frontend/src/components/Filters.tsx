@@ -1,5 +1,5 @@
 
-import { FilterProps, Input } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/react';
 interface FilterType {
     search: string;  

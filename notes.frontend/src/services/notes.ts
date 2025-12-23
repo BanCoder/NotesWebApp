@@ -20,9 +20,16 @@ export const fetchNotes = async (filter?: FilterType) => {
         console.log(e); 
     }
 }
-export const createNote = async (note: { text: string }) => {
+export const createNote = async (note: { title: string, description: string}) => {
     try{
-        var response = await axios.post("http://localhost:5143/note", note)
+        var response = await axios.post("http://localhost:5143/note", null,
+            {
+                params: {
+                    title: note.title, 
+                    description: note.description
+                }
+            }
+        ); 
         return response.status; 
     }
     catch(e){

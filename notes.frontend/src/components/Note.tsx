@@ -3,9 +3,9 @@ import moment from 'moment';
 interface NoteProps{
     title: string; 
     description: string;
-    createAt: string;
+    createdAt: string;
 }
-export default function Note({title, description, createAt}: NoteProps) {
+export default function Note({title, description, createdAt}: NoteProps) {
   return (
         <Card variant={"filled"}>
             <CardHeader>
@@ -16,7 +16,7 @@ export default function Note({title, description, createAt}: NoteProps) {
                 <Text>{description}</Text>
             </CardBody>
             <Divider borderColor={"gray"}/>
-            <CardFooter>{moment(createAt).format("DD/MM/YYYY h:mm:ss")}</CardFooter>
+            <CardFooter>{moment(createdAt).format("DD/MM/YYYY h:mm:ss")}</CardFooter>
         </Card>
     );
 }

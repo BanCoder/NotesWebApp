@@ -7,7 +7,7 @@ interface NoteFormData {
 }
 
 interface CreateNoteFormProps {
-  onCreate: (note: { text: string }) => void;
+  onCreate: (note: { title: string, description: string }) => void;
 }
 
 export default function CreateNoteForm({ onCreate }: CreateNoteFormProps) {
@@ -15,8 +15,7 @@ export default function CreateNoteForm({ onCreate }: CreateNoteFormProps) {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const noteForBackend = { text: `${note.title}: ${note.description}` };
-    onCreate(noteForBackend);
+    onCreate({title: note.title, description: note.description});
     setNote({ title: '', description: '' });
   };
 
