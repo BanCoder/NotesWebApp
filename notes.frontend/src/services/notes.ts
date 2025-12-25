@@ -36,3 +36,12 @@ export const createNote = async (note: { title: string, description: string}) =>
         console.log(e); 
     }
 }
+export const deleteNote = async (id: number) => {
+    try{
+        var response = await axios.delete(`http://localhost:5143/note/${id}`)
+        return response.status; 
+    }
+    catch(e){
+        console.log(e); 
+    }
+}

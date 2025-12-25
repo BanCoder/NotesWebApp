@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import CreateNoteForm from './components/CreateNoteForm';
 import Note from './components/Note';
-import { fetchNotes, createNote } from './services/notes';
+import { fetchNotes, createNote, deleteNote} from './services/notes';
 import Filters from './components/Filters';
-
 
 interface NoteType {
   id: number;
@@ -36,19 +35,25 @@ function App() {
     const notes = await fetchNotes(filter);
     setNotes(notes || []);
   };
+  const onDelete = async (id: number) => {
+    await deleteNote(id); 
+    const notes = await fetchNotes(filter); 
+    setNotes(notes || []);
+  }
   return (
     <section className='p-8 flex flex-row justify-start items-start gap-12'> 
       <div className="flex flex-col w-1/3 gap-10">
         <CreateNoteForm onCreate={onCreate}/>
         <Filters filter={filter} setFilter ={setFilter} />
       </div>
-      <ul className='flex flex-col gap-5 w-1/2'>
+      <ul className='flex flex-col gap-5 w-1/2 list-none'>
           {notes.map((n) => ( 
           <li key={n.id}>
             <Note 
               title={n.title}
               description={n.description}
               createdAt={n.created}
+              onDelete={()=> onDelete(n.id)}
             />
           </li>
         ))}

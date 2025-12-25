@@ -21,7 +21,7 @@ export default function CreateNoteForm({ onCreate }: CreateNoteFormProps) {
 
   return (
     <form onSubmit={onSubmit} className='w-full flex flex-col gap-3'>
-      <h3 className='font-bold text-xl'>Создание заметки</h3>
+      <h3 className='font-bold text-xl text-center' >Создание заметки</h3>
       <Input
         placeholder='Название'
         value={note.title}
