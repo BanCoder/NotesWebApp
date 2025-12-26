@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BusinessLogic.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessLogic
 {

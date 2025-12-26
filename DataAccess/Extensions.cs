@@ -1,16 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccess.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.Configuration;
 namespace DataAccess
 {
 	public static class Extensions
 	{
-		public static IServiceCollection AddDataAccess(this IServiceCollection serviceCollection)
+		public static IServiceCollection AddDataAccess(this IServiceCollection serviceCollection, IConfiguration configuration)
 		{
+			var connectionString = configuration.GetConnectionString("DefaultConnection") ?? configuration["ConnectionSettings:sqlConnection"]; 
 			serviceCollection.AddScoped<INoteRepository, NoteRepository>(); 
 			serviceCollection.AddDbContext<AppContext>(x =>
 			{
-				x.UseNpgsql("Server=localhost;Port=5432;Database=NoteDb; User Id=postgres; Password=postgres"); 
+				x.UseNpgsql(connectionString); 
 			}); 
 			return serviceCollection;
 		}

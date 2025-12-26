@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccess.Model;
+using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess
+namespace DataAccess.Repository
 {
-	internal class NoteRepository(AppContext context): INoteRepository
+	public class NoteRepository(AppContext context): INoteRepository
 	{
 		public async Task CreateAsync(Note note, CancellationToken cancellationToken = default)
 		{

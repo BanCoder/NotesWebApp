@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NotesWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f02f6d23b28e99fefef367fa47ce37d297b32db0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d840f557a53de9b2cc6118294db3ab74ebef4a3d")]
 [assembly: System.Reflection.AssemblyProductAttribute("NotesWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NotesWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

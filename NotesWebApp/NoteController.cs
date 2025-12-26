@@ -1,4 +1,4 @@
-﻿using BusinessLogic;
+﻿using BusinessLogic.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NotesWebApp

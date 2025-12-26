@@ -1,5 +1,5 @@
-﻿using DataAccess;
-namespace BusinessLogic
+﻿using DataAccess.Model;
+namespace BusinessLogic.Services
 {
 	public interface INoteService
 	{

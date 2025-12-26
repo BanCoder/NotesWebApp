@@ -1,4 +1,6 @@
-﻿namespace DataAccess
+﻿using DataAccess.Model;
+
+namespace DataAccess.Repository
 {
 	public interface INoteRepository
 	{
