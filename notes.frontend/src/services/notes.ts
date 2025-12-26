@@ -1,4 +1,5 @@
 import axios from "axios"
+
 interface FilterType {
   search?: string;
   sortOrder?: string;

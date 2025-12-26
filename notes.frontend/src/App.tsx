@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './styles/App.css';
 import CreateNoteForm from './components/CreateNoteForm';
 import Note from './components/Note';
 import { fetchNotes, createNote, deleteNote} from './services/notes';
 import Filters from './components/Filters';
+import { Card } from '@chakra-ui/react';
 
 interface NoteType {
   id: number;
@@ -41,7 +42,9 @@ function App() {
     setNotes(notes || []);
   }
   return (
-    <section className='p-8 flex flex-row justify-start items-start gap-12'> 
+    <div className='min-h-screen bg-gradient-to-b from-sky-100 grid place-items-center p-1'>
+      <Card className='border-2 border-gray-300 rounded-lg shadow-xl w-full max-w-6xl'>
+      <section className='bg-slate-50 p-8 flex flex-row justify-start items-start gap-12'> 
       <div className="flex flex-col w-1/3 gap-10">
         <CreateNoteForm onCreate={onCreate}/>
         <Filters filter={filter} setFilter ={setFilter} />
@@ -59,6 +62,8 @@ function App() {
         ))}
         </ul>
     </section>
+    </Card>
+    </div>
   );
 }
 export default App;
